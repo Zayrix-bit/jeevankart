@@ -1,115 +1,180 @@
 "use client";
 
+import { useState, useCallback } from "react";
 import { projects } from "@/data/projects";
 import FadeUp from "@/components/animations/FadeUp";
-import Link from "next/link";
-import { ArrowUpRight, Stethoscope, Building2, FileText } from "lucide-react";
-import BorderGlow from "@/components/BorderGlow";
-
-const accentColors = {
-  emerald: { dot: "bg-emerald-400", line: "bg-emerald-500/30", tag: "border-emerald-500/20 text-emerald-400/80" },
-  blue:    { dot: "bg-blue-400",    line: "bg-blue-500/30",    tag: "border-blue-500/20 text-blue-400/80" },
-  violet:  { dot: "bg-violet-400",  line: "bg-violet-500/30",  tag: "border-violet-500/20 text-violet-400/80" },
-};
-
-const projectIcons = {
-  stethoscope: Stethoscope,
-  building: Building2,
-  file: FileText,
-};
+import { ArrowUpRight } from "lucide-react";
 
 export default function Projects() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = projects[activeIndex];
+
+  const handleSelect = useCallback((i) => {
+    setActiveIndex(i);
+  }, []);
+
   return (
-    <section id="projects" className="py-24 lg:py-40 bg-transparent">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 lg:py-40 bg-transparent relative overflow-hidden">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* Section Header */}
         <FadeUp delay={0.1}>
-          <div className="mb-12 md:flex md:items-end md:justify-between">
-            <div className="max-w-xl">
-              <h2 className="text-xl sm:text-2xl lg:text-[20px] font-medium tracking-widest text-white uppercase opacity-90">Featured Projects</h2>
-              <p className="mt-4 text-sm lg:text-[14px] text-slate-400 leading-loose opacity-80 font-light">
-                A selection of recent work that highlights my focus on performance, conversion, and clean design.
-              </p>
-            </div>
+          <div className="mb-16 sm:mb-24">
+            <h2 className="text-xl sm:text-2xl lg:text-[20px] font-medium tracking-widest text-white uppercase opacity-90">
+              Featured Projects
+            </h2>
+            <p className="mt-4 text-sm lg:text-[14px] text-slate-400 leading-loose opacity-80 font-light max-w-lg">
+              A selection of recent work that highlights my focus on performance, conversion, and clean design.
+            </p>
           </div>
         </FadeUp>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {projects.map((project, index) => {
-            const colors = accentColors[project.accentBorder] || accentColors.blue;
-            return (
-              <FadeUp key={project.id} delay={0.1 + (index * 0.1)}>
-                <Link
-                  href={project.demoLink}
+        <FadeUp delay={0.2}>
+          <div className="relative">
+
+            {/* ═══ Ambient Glow ═══ */}
+            <div
+              className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full pointer-events-none transition-all duration-[1200ms] ease-out blur-[120px] opacity-[0.07]"
+              style={{ background: active.glow }}
+            />
+            <div
+              className="absolute -bottom-20 -right-20 w-[300px] h-[300px] rounded-full pointer-events-none transition-all duration-[1200ms] ease-out blur-[100px] opacity-[0.05]"
+              style={{ background: active.glow }}
+            />
+
+            {/* ═══ Main Layout ═══ */}
+            <div className="flex flex-col lg:flex-row lg:items-start lg:gap-20">
+
+              {/* ─── Left: Project Selector ─── */}
+              <nav className="flex flex-row lg:flex-col gap-0 lg:w-48 shrink-0 mb-12 lg:mb-0 lg:pt-4 border-b lg:border-b-0 border-white/[0.06]">
+                {projects.map((project, i) => {
+                  const isActive = i === activeIndex;
+                  return (
+                    <button
+                      key={project.id}
+                      onClick={() => handleSelect(i)}
+                      onMouseEnter={() => handleSelect(i)}
+                      className="relative text-left py-4 lg:py-5 px-1 flex-1 lg:flex-none group transition-all duration-300 cursor-pointer"
+                    >
+                      {/* Active indicator — bottom on mobile, left on desktop */}
+                      <div
+                        className="absolute bottom-0 lg:bottom-auto lg:top-0 lg:left-0 transition-all duration-500 ease-out"
+                        style={{
+                          /* Mobile: bottom bar */
+                          height: '2px',
+                          width: isActive ? '100%' : '0%',
+                          background: project.glow,
+                        }}
+                      />
+                      <div
+                        className="hidden lg:block absolute left-0 top-0 bottom-0 transition-all duration-500 ease-out rounded-full"
+                        style={{
+                          width: '2px',
+                          height: isActive ? '100%' : '0%',
+                          background: project.glow,
+                        }}
+                      />
+
+                      {/* Index + Title */}
+                      <div className="lg:pl-4">
+                        <span
+                          className="block text-[10px] font-mono tracking-widest mb-1 transition-colors duration-400"
+                          style={{ color: isActive ? project.glow : 'rgba(148,163,184,0.3)' }}
+                        >
+                          {project.index}
+                        </span>
+                        <span
+                          className="block text-xs sm:text-sm font-medium tracking-wide transition-all duration-400"
+                          style={{
+                            color: isActive ? '#fff' : 'rgba(148,163,184,0.4)',
+                          }}
+                        >
+                          {project.title}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </nav>
+
+              {/* ─── Right: Spotlight Display ─── */}
+              <div className="flex-1 min-w-0 relative">
+
+                {/* Large Title */}
+                <div className="relative">
+                  <h3
+                    className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1] transition-all duration-500 ease-out"
+                    key={active.id + '-title'}
+                  >
+                    {active.title}
+                  </h3>
+                  <p
+                    className="mt-2 text-sm sm:text-base font-light tracking-widest uppercase transition-all duration-500"
+                    style={{ color: `${active.glow}99` }}
+                    key={active.id + '-sub'}
+                  >
+                    {active.subtitle}
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div className="mt-8 mb-8 h-px w-full relative overflow-hidden">
+                  <div className="absolute inset-0 bg-white/[0.06]" />
+                  <div
+                    className="absolute top-0 left-0 h-full transition-all duration-700 ease-out"
+                    style={{
+                      width: '40%',
+                      background: `linear-gradient(90deg, ${active.glow}50, transparent)`,
+                    }}
+                  />
+                </div>
+
+                {/* Description */}
+                <p
+                  className="text-sm sm:text-[15px] text-slate-400/90 leading-[1.9] font-light max-w-xl transition-all duration-500"
+                  key={active.id + '-desc'}
+                >
+                  {active.description}
+                </p>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2.5 mt-6" key={active.id + '-tech'}>
+                  {active.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-[11px] px-3 py-1 rounded-full font-medium tracking-wide transition-all duration-400"
+                      style={{
+                        border: `1px solid ${active.glow}20`,
+                        color: `${active.glow}bb`,
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <a
+                  href={active.demoLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-full group"
+                  className="inline-flex items-center gap-2 mt-10 px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-all duration-400 group/cta hover:scale-[1.02]"
+                  style={{
+                    border: `1px solid ${active.glow}30`,
+                    color: active.glow,
+                    background: `${active.glow}08`,
+                  }}
                 >
-                  <BorderGlow
-                    className="h-full hover:-translate-y-1.5 transition-all duration-400"
-                    borderRadius={20}
-                    backgroundColor="#050505"
-                    glowColor="rainbow"
-                    glowRadius={30}
-                    glowIntensity={0.8}
-                    edgeSensitivity={30}
-                    coneSpread={25}
-                    animated={false}
-                    colors={['#c084fc', '#f472b6', '#38bdf8']}
-                  >
-                    <div className="flex flex-col h-full overflow-hidden rounded-[20px]">
+                  View Live Project
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+                </a>
 
-                      {/* Gradient Header — replaces screenshot */}
-                      <div className={`relative h-32 sm:h-40 w-full bg-gradient-to-br ${project.accent} flex items-center justify-center overflow-hidden`}>
-                        {/* Decorative grid pattern */}
-                        <div className="absolute inset-0 opacity-[0.04]" style={{
-                          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-                          backgroundSize: '24px 24px'
-                        }} />
-                        {/* Accent dot */}
-                        <div className={`absolute top-4 left-4 w-2 h-2 rounded-full ${colors.dot} opacity-60`} />
-                        {/* Decorative line */}
-                        <div className={`absolute bottom-0 left-0 right-0 h-px ${colors.line}`} />
-                        {/* Icon */}
-                        {(() => {
-                          const IconComponent = projectIcons[project.icon];
-                          return IconComponent ? (
-                            <IconComponent className="w-12 h-12 sm:w-14 sm:h-14 text-white/20 group-hover:text-white/35 group-hover:scale-110 transition-all duration-500 stroke-[1.2]" />
-                          ) : null;
-                        })()}
-                      </div>
+              </div>
+            </div>
 
-                      {/* Content */}
-                      <div className="p-5 sm:p-6 flex flex-col flex-grow">
-                        <h3 className="text-[15px] sm:text-base font-semibold text-white mb-2 tracking-wide leading-tight group-hover:text-white/90 transition-colors">
-                          {project.title}
-                        </h3>
-                        <p className="text-xs sm:text-[13px] text-slate-400/80 mb-4 flex-grow line-clamp-3 leading-relaxed font-light">
-                          {project.description}
-                        </p>
+          </div>
+        </FadeUp>
 
-                        {/* Tech Tags */}
-                        <div className="flex flex-wrap gap-1.5 mb-5">
-                          {project.tech.map((t) => (
-                            <span key={t} className={`text-[10px] px-2 py-0.5 rounded-full border ${colors.tag} font-medium`}>
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* CTA */}
-                        <div className="inline-flex items-center text-white/70 group-hover:text-white transition-colors text-xs uppercase tracking-widest font-medium mt-auto">
-                          View Project
-                          <ArrowUpRight className="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                        </div>
-                      </div>
-
-                    </div>
-                  </BorderGlow>
-                </Link>
-              </FadeUp>
-            );
-          })}
-        </div>
       </div>
     </section>
   );

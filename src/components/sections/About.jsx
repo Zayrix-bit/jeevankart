@@ -47,23 +47,34 @@ export default function About() {
             </FadeUp>
 
             <p className="about-editorial__text">
-              I am a passionate web developer focused on creating fast, accessible, and
-              high-converting websites. With a strong foundation in modern web technologies,
-              I bridge the gap between design and technical implementation — transforming
-              ideas into polished digital experiences that feel alive.
+              Hey, I&apos;m Ritesh, a web developer who loves building websites that actually
+              work. Not just look good, but load fast, feel smooth, and help real businesses
+              get more customers. I&apos;ve spent years learning the tools and technologies that
+              power the best websites on the internet, and now I use them to build things
+              that make a real difference for the people I work with.
             </p>
 
             <p className="about-editorial__text">
-              My goal is to help businesses establish a powerful online presence. Whether you
-              need a simple landing page or a complex web application, I deliver scalable
-              solutions tailored to your unique requirements. Every line of code I write is
-              driven by a commitment to performance, accessibility, and visual excellence.
+              What I do is pretty simple. I take your idea, your brand, or your business
+              and turn it into a website that people love to use. Whether it&apos;s a clean
+              landing page that gets people to book an appointment, or a full web app with
+              lots of moving parts, I handle everything from the design to the code. I make
+              sure every page looks great on phones, tablets, and desktops, because your
+              customers are on all of them.
             </p>
 
             <p className="about-editorial__text">
-              I believe great software is invisible — it just works. From responsive layouts
-              to smooth micro-interactions, I obsess over the details that make a product
-              feel premium. Let&apos;s build something remarkable together.
+              I&apos;m not the kind of developer who just writes code and calls it a day. I care
+              about the small stuff. The way a button feels when you click it, how fast a
+              page loads, how easy it is for someone to find what they need. These little
+              details are what make a website feel professional and trustworthy, and that&apos;s
+              what turns visitors into paying customers.
+            </p>
+
+            <p className="about-editorial__text">
+              If you&apos;re looking for someone who can build you something modern, fast, and
+              built to grow with your business, let&apos;s talk. I&apos;m always open to new
+              projects and love working with people who want to stand out online.
             </p>
 
             {/* Clear float */}
