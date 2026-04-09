@@ -49,7 +49,7 @@ export default function Footer() {
               <span className="sr-only">Twitter</span>
               <TwitterIcon className="w-5 h-5" />
             </Link>
-            <Link href="mailto:hello@jeevankart.com" className="text-slate-400 hover:text-white transition-colors">
+            <Link href="mailto:jeevankart.in@gmail.com" className="text-slate-400 hover:text-white transition-colors">
               <span className="sr-only">Email</span>
               <Mail className="w-5 h-5" />
             </Link>

@@ -1,9 +1,28 @@
 "use client";
 
+import { useState } from "react";
 import FadeUp from "@/components/animations/FadeUp";
-import { Mail, Phone, MessageSquare } from "lucide-react";
+import Toast from "@/components/Toast";
+import { Mail, Phone, MessageSquare, Send } from "lucide-react";
+import { sendEmail } from "@/app/actions/sendEmail";
 
 export default function Contact() {
+  const [isPending, setIsPending] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  async function handleSubmit(formData) {
+    setIsPending(true);
+    setToast(null);
+    const result = await sendEmail(formData);
+    if (result.success) {
+      setToast({ type: "success", message: "Message sent successfully!" });
+      document.getElementById('contact-form').reset();
+    } else {
+      setToast({ type: "error", message: "Something went wrong. Try again." });
+    }
+    setIsPending(false);
+  }
+
   return (
     <section id="contact" className="py-24 lg:py-40 bg-transparent relative z-10">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,16 +48,16 @@ export default function Contact() {
                   <div className="space-y-4 sm:space-y-5">
                     <div className="flex items-center text-slate-300 text-xs sm:text-sm">
                       <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-white" />
-                      <span>hello@jeevankart.com</span>
+                      <span>jeevankart.in@gmail.com</span>
                     </div>
                     <div className="flex items-center text-slate-300 text-xs sm:text-sm">
                       <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-3 text-white" />
-                      <span>+1 (555) 123-4567</span>
+                      <span>+91 9873828153</span>
                     </div>
                   </div>
                 </div>
                 <div className="mt-6 sm:mt-8">
-                  <a href="#" className="inline-flex items-center justify-center w-full bg-white text-black py-2.5 px-5 rounded-full font-semibold transition-all hover:bg-slate-200 hover:scale-105 outline-none text-xs sm:text-sm">
+                  <a href="https://wa.me/919873828153?text=Hi%20Ritesh%2C%20I%20have%20a%20project%20to%20discuss" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-full bg-white text-black py-2.5 px-5 rounded-full font-semibold transition-all hover:bg-slate-200 hover:scale-105 outline-none text-xs sm:text-sm">
                     <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
                     WhatsApp Me
                   </a>
@@ -47,21 +66,36 @@ export default function Contact() {
               
               {/* Contact Form */}
               <div className="p-5 sm:p-8 md:col-span-3">
-                <form className="space-y-4 sm:space-y-5" onSubmit={(e) => e.preventDefault()}>
+                <form id="contact-form" className="space-y-4 sm:space-y-5" action={handleSubmit}>
+                  <input type="hidden" name="_subject" value="New Contact from Jeevankart Portfolio" />
                   <div>
                     <label htmlFor="name" className="block text-[10px] sm:text-xs font-medium text-slate-300 mb-1 uppercase tracking-wider">Full Name</label>
-                    <input type="text" id="name" className="w-full px-3 py-2.5 rounded-xl border border-white/10 focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all outline-none bg-black/40 text-white placeholder-slate-600 text-xs sm:text-sm" placeholder="John Doe" />
+                    <input type="text" id="name" name="name" required className="w-full px-3 py-2.5 rounded-xl border border-white/10 focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all outline-none bg-black/40 text-white placeholder-slate-600 text-xs sm:text-sm" placeholder="John Doe" />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-[10px] sm:text-xs font-medium text-slate-300 mb-1 uppercase tracking-wider">Email Address</label>
-                    <input type="email" id="email" className="w-full px-3 py-2.5 rounded-xl border border-white/10 focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all outline-none bg-black/40 text-white placeholder-slate-600 text-xs sm:text-sm" placeholder="john@example.com" />
+                    <input type="email" id="email" name="email" required className="w-full px-3 py-2.5 rounded-xl border border-white/10 focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all outline-none bg-black/40 text-white placeholder-slate-600 text-xs sm:text-sm" placeholder="john@example.com" />
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-[10px] sm:text-xs font-medium text-slate-300 mb-1 uppercase tracking-wider">Your Message</label>
-                    <textarea id="message" rows="3" className="w-full px-3 py-2.5 rounded-xl border border-white/10 focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all outline-none bg-black/40 text-white placeholder-slate-600 resize-none text-xs sm:text-sm" placeholder="Tell me about your project..."></textarea>
+                    <textarea id="message" name="message" rows="3" required className="w-full px-3 py-2.5 rounded-xl border border-white/10 focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all outline-none bg-black/40 text-white placeholder-slate-600 resize-none text-xs sm:text-sm" placeholder="Tell me about your project..."></textarea>
                   </div>
-                  <button type="submit" className="w-full bg-white hover:bg-slate-200 text-black font-semibold py-2.5 sm:py-3 px-5 rounded-xl transition-all hover:scale-105 outline-none text-xs sm:text-sm">
-                    Send Message
+                  <button 
+                    type="submit" 
+                    disabled={isPending}
+                    className={`w-full flex items-center justify-center gap-2 font-semibold py-2.5 sm:py-3 px-5 rounded-xl transition-all outline-none text-xs sm:text-sm cursor-pointer ${isPending ? 'bg-slate-300 text-black/50 cursor-not-allowed' : 'bg-white hover:bg-slate-200 text-black hover:scale-[1.02]'}`}
+                  >
+                    {isPending ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
@@ -69,6 +103,15 @@ export default function Contact() {
           </div>
         </FadeUp>
       </div>
+
+      {/* Toast Popup */}
+      {toast && (
+        <Toast
+          type={toast.type}
+          message={toast.message}
+          onClose={() => setToast(null)}
+        />
+      )}
     </section>
   );
 }
