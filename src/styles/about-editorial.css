@@ -1,0 +1,77 @@
+/* ─────────────────────────────────────────────
+   About Editorial — Magazine-style text + image
+   ───────────────────────────────────────────── */
+
+.about-editorial {
+  position: relative;
+  overflow: visible;
+}
+
+/* ── Floated Profile Card ── */
+.about-editorial__image {
+  float: right;
+  width: 200px;
+  margin: 0 0 20px 28px;
+  border-radius: 0;
+  overflow: visible;
+  shape-outside: margin-box;
+}
+
+/* ── Text Paragraphs ── */
+.about-editorial__text {
+  font-size: 15px;
+  line-height: 2;
+  color: rgba(148, 163, 184, 0.85);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+}
+
+.about-editorial__text:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ─────────────────────────────────────────────
+   Responsive
+   ───────────────────────────────────────────── */
+
+/* Phones — stack vertically, center card */
+@media (max-width: 640px) {
+  .about-editorial__image {
+    float: none;
+    width: 370px;
+    margin: 0 auto 28px auto;
+    display: block;
+  }
+
+  .about-editorial__text {
+    font-size: 14px;
+    line-height: 1.9;
+    text-align: left;
+  }
+}
+
+/* Tablets */
+@media (min-width: 641px) and (max-width: 768px) {
+  .about-editorial__image {
+    width: 160px;
+    margin: 0 0 20px 24px;
+  }
+
+  .about-editorial__text {
+    font-size: 14px;
+    line-height: 1.95;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1024px) {
+  .about-editorial__image {
+    width: 450px;
+    margin: 0 0 28px 40px;
+  }
+
+  .about-editorial__text {
+    font-size: 15px;
+  }
+}
