@@ -39,7 +39,7 @@
 @media (max-width: 640px) {
   .about-editorial__image {
     float: none;
-    width: 370px;
+    width: 385px;
     margin: 0 auto 28px auto;
     display: block;
   }
