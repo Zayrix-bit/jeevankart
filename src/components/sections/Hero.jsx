@@ -5,21 +5,21 @@ import FadeUp from "@/components/animations/FadeUp";
 
 export default function Hero() {
   return (
-    <section className="relative px-4 pt-28 pb-16 sm:pt-40 sm:pb-24 lg:pb-32 overflow-hidden bg-transparent min-h-screen flex items-center" id="home">
+    <section className="relative px-4 pt-28 pb-16 sm:pt-40 sm:pb-24 lg:pb-32 overflow-hidden bg-transparent min-h-screen flex items-center" id="home" aria-label="Hero">
       <div className="absolute inset-0 z-0">
       </div>
       <div className="max-w-5xl mx-auto text-center relative z-10 w-full pointer-events-none">
 
         <FadeUp delay={0.2}>
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-medium text-white tracking-wide mb-4 sm:mb-6 lg:leading-relaxed">
-            Web Developer Who Builds <br className="hidden sm:block" />
+            Freelance Web Developer Who Builds <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 font-semibold">High-Converting</span> Websites
           </h1>
         </FadeUp>
         
         <FadeUp delay={0.3}>
           <p className="mt-3 sm:mt-4 text-[13px] sm:text-sm lg:text-[13px] xl:text-[14px] leading-relaxed sm:leading-loose text-slate-400 max-w-lg mx-auto mb-8 sm:mb-10 font-light tracking-normal opacity-80 px-2 sm:px-0">
-            I specialize in clean, minimal, and SEO-optimized web experiences designed to turn your visitors into loyal customers. Let&apos;s build something great.
+            I build clean, SEO-optimized web experiences with Next.js and React — designed to turn your visitors into loyal customers. Let&apos;s build something great.
           </p>
         </FadeUp>
         
@@ -28,14 +28,16 @@ export default function Hero() {
             <Link 
               href="#projects" 
               className="rounded-full bg-white px-8 py-3 sm:py-4 text-sm font-semibold text-black shadow-sm hover:bg-slate-200 hover:scale-105 transition-all outline-none w-full sm:w-auto"
+              aria-label="View my featured projects"
             >
-              Get Started
+              View My Work
             </Link>
             <Link 
               href="#contact" 
               className="text-sm font-semibold leading-6 text-white border border-white/20 px-8 py-3 sm:py-4 rounded-full hover:bg-white/10 hover:border-white/30 transition-all outline-none w-full sm:w-auto"
+              aria-label="Get a free quote for your project"
             >
-              Learn More
+              Get a Free Quote
             </Link>
           </div>
         </FadeUp>

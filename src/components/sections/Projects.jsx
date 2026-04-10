@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { projects } from "@/data/projects";
 import FadeUp from "@/components/animations/FadeUp";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -14,7 +15,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-16 sm:py-24 lg:py-40 bg-transparent relative overflow-hidden">
+    <section id="projects" className="py-16 sm:py-24 lg:py-40 bg-transparent relative overflow-hidden" aria-label="Featured web development projects">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
@@ -24,7 +25,7 @@ export default function Projects() {
               Featured Projects
             </h2>
             <p className="mt-4 text-sm lg:text-[14px] text-slate-400 leading-loose opacity-80 font-light max-w-lg">
-              A selection of recent work that highlights my focus on performance, conversion, and clean design.
+              Recent work showcasing high-converting websites built with Next.js, React, and modern web technologies.
             </p>
           </div>
         </FadeUp>
@@ -36,17 +37,19 @@ export default function Projects() {
             <div
               className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full pointer-events-none transition-all duration-[1200ms] ease-out blur-[120px] opacity-[0.07]"
               style={{ background: active.glow }}
+              aria-hidden="true"
             />
             <div
               className="absolute -bottom-20 -right-20 w-[300px] h-[300px] rounded-full pointer-events-none transition-all duration-[1200ms] ease-out blur-[100px] opacity-[0.05]"
               style={{ background: active.glow }}
+              aria-hidden="true"
             />
 
             {/* ═══ Main Layout ═══ */}
             <div className="flex flex-col lg:flex-row lg:items-start lg:gap-20">
 
               {/* ─── Left: Project Selector ─── */}
-              <nav className="flex flex-row lg:flex-col gap-0 lg:w-48 shrink-0 mb-12 lg:mb-0 lg:pt-4 border-b lg:border-b-0 border-white/[0.06] overflow-x-auto snap-x snap-mandatory">
+              <nav className="flex flex-row lg:flex-col gap-0 lg:w-48 shrink-0 mb-12 lg:mb-0 lg:pt-4 border-b lg:border-b-0 border-white/[0.06] overflow-x-auto snap-x snap-mandatory" aria-label="Project navigation">
                 {projects.map((project, i) => {
                   const isActive = i === activeIndex;
                   return (
@@ -55,16 +58,18 @@ export default function Projects() {
                       onClick={() => handleSelect(i)}
                       onMouseEnter={() => handleSelect(i)}
                       className="relative text-left py-4 lg:py-5 px-1 flex-1 lg:flex-none group transition-all duration-300 cursor-pointer snap-start shrink-0 min-w-[80px]"
+                      aria-current={isActive ? "true" : undefined}
+                      aria-label={`View project: ${project.title}`}
                     >
                       {/* Active indicator — bottom on mobile, left on desktop */}
                       <div
                         className="absolute bottom-0 lg:bottom-auto lg:top-0 lg:left-0 transition-all duration-500 ease-out"
                         style={{
-                          /* Mobile: bottom bar */
                           height: '2px',
                           width: isActive ? '100%' : '0%',
                           background: project.glow,
                         }}
+                        aria-hidden="true"
                       />
                       <div
                         className="hidden lg:block absolute left-0 top-0 bottom-0 transition-all duration-500 ease-out rounded-full"
@@ -73,6 +78,7 @@ export default function Projects() {
                           height: isActive ? '100%' : '0%',
                           background: project.glow,
                         }}
+                        aria-hidden="true"
                       />
 
                       {/* Index + Title */}
@@ -98,7 +104,22 @@ export default function Projects() {
               </nav>
 
               {/* ─── Right: Spotlight Display ─── */}
-              <div className="flex-1 min-w-0 relative">
+              <article className="flex-1 min-w-0 relative">
+
+                {/* Project Screenshot */}
+                {active.image && (
+                  <div className="mb-8 rounded-xl overflow-hidden border border-white/10">
+                    <Image
+                      src={active.image}
+                      alt={`Screenshot of ${active.title} — ${active.subtitle}`}
+                      width={800}
+                      height={450}
+                      className="w-full h-auto object-cover"
+                      loading="lazy"
+                      quality={80}
+                    />
+                  </div>
+                )}
 
                 {/* Large Title */}
                 <div className="relative">
@@ -118,7 +139,7 @@ export default function Projects() {
                 </div>
 
                 {/* Divider */}
-                <div className="mt-8 mb-8 h-px w-full relative overflow-hidden">
+                <div className="mt-8 mb-8 h-px w-full relative overflow-hidden" aria-hidden="true">
                   <div className="absolute inset-0 bg-white/[0.06]" />
                   <div
                     className="absolute top-0 left-0 h-full transition-all duration-700 ease-out"
@@ -138,7 +159,7 @@ export default function Projects() {
                 </p>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2.5 mt-6" key={active.id + '-tech'}>
+                <div className="flex flex-wrap gap-2.5 mt-6" key={active.id + '-tech'} aria-label="Technologies used">
                   {active.tech.map((t) => (
                     <span
                       key={t}
@@ -164,12 +185,13 @@ export default function Projects() {
                     color: active.glow,
                     background: `${active.glow}08`,
                   }}
+                  aria-label={`View live demo of ${active.title}`}
                 >
                   View Live Project
-                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" aria-hidden="true" />
                 </a>
 
-              </div>
+              </article>
             </div>
 
           </div>

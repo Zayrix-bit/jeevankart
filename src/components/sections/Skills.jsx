@@ -19,19 +19,19 @@ const techLogos = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-16 sm:py-24 lg:py-40 bg-transparent relative z-10">
+    <section id="skills" className="py-16 sm:py-24 lg:py-40 bg-transparent relative z-10" aria-label="Technical skills and technologies">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeUp delay={0.1}>
           <div className="text-center mb-12">
             <h2 className="text-xl sm:text-2xl lg:text-[20px] font-medium tracking-widest text-white uppercase opacity-90">Technical Arsenal</h2>
             <p className="mt-4 text-sm lg:text-[14px] text-slate-400 leading-loose opacity-80 font-light max-w-2xl mx-auto">
-              The core technologies I use to build scalable and maintainable products.
+              The core technologies I use to build scalable, high-performance web applications.
             </p>
           </div>
         </FadeUp>
 
         <FadeUp delay={0.2}>
-          <div style={{ height: '120px', position: 'relative', overflow: 'hidden' }} className="w-full">
+          <div style={{ height: '120px', position: 'relative', overflow: 'hidden' }} className="w-full" role="list" aria-label="Technology logos">
             <LogoLoop
               logos={techLogos}
               speed={100}

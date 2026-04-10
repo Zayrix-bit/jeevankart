@@ -20,9 +20,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-[#020202] pt-16 pb-8 px-4 sm:px-6 lg:px-8 mt-auto relative z-10 border-t border-white/5">
+    <footer className="bg-[#020202] pt-16 pb-8 px-4 sm:px-6 lg:px-8 mt-auto relative z-10 border-t border-white/5" role="contentinfo">
       {/* Subtle top edge glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] max-w-3xl h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] max-w-3xl h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" aria-hidden="true"></div>
 
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-0">
@@ -47,7 +47,7 @@ export default function Footer() {
           </div>
           
           {/* Social Connections */}
-          <div className="flex flex-col md:items-end">
+          <nav className="flex flex-col md:items-end" aria-label="Social links">
             <span className="text-white font-medium mb-4 text-xs tracking-wider uppercase opacity-80 hidden md:block">Connect</span>
             <div className="flex gap-5 sm:gap-6">
               <Link href="https://github.com/Zayrix-bit" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors duration-300">
@@ -59,7 +59,7 @@ export default function Footer() {
                 <WhatsappIcon className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
               </Link>
             </div>
-          </div>
+          </nav>
 
         </div>
 

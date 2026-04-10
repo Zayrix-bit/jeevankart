@@ -4,6 +4,7 @@ import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Services from "@/components/sections/Services";
 import WhyChooseMe from "@/components/sections/WhyChooseMe";
+import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
 import {
   PerspectiveFold,
@@ -42,6 +43,11 @@ export default function Home() {
       <ScalePortal>
         <WhyChooseMe />
       </ScalePortal>
+
+      {/* FAQ — for SEO featured snippets */}
+      <PerspectiveFold>
+        <FAQ />
+      </PerspectiveFold>
 
       {/* Contact */}
       <ScalePortal>

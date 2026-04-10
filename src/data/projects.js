@@ -4,29 +4,32 @@ export const projects = [
     index: "01",
     title: "DentalCare Premium",
     subtitle: "Emergency Dental Platform",
-    description: "A high-performance emergency dental landing page featuring 15-minute response triggers and automated booking.",
-    tech: ["Next.js", "React", "Tailwind", "Framer Motion"],
+    description: "A high-performance emergency dental landing page featuring 15-minute response triggers and automated booking — built for maximum patient conversion.",
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
     glow: "#34d399",
-    demoLink: "https://dental-nextjs2.vercel.app/"
+    demoLink: "https://dental-nextjs2.vercel.app/",
+    image: "/images/dental-care-hero.png",
   },
   {
     id: 2,
     index: "02",
     title: "Modern Dental Studio",
     subtitle: "Full-Service Clinic Website",
-    description: "A comprehensive clinic website with specialist service modules, patient testimonials, and a custom gallery.",
+    description: "A comprehensive clinic website with specialist service modules, patient testimonials, and a custom gallery — designed to build trust and drive appointments.",
     tech: ["Next.js", "CSS", "React", "Node.js"],
     glow: "#60a5fa",
-    demoLink: "https://dental-nextjs-bay.vercel.app/"
+    demoLink: "https://dental-nextjs-bay.vercel.app/",
+    image: "/images/dental-studio-hero.png",
   },
   {
     id: 3,
     index: "03",
     title: "PhotoPDF Tools",
     subtitle: "Browser-Based Utility Suite",
-    description: "A comprehensive suite of online PDF and image utilities, featuring instant local browser processing and professional-grade editing.",
-    tech: ["Next.js", "React", "Tailwind", "JavaScript"],
+    description: "A comprehensive suite of online PDF and image utilities, featuring instant local browser processing and professional-grade editing — zero server uploads required.",
+    tech: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
     glow: "#a78bfa",
-    demoLink: "https://pdf-beige-nu.vercel.app/"
+    demoLink: "https://pdf-beige-nu.vercel.app/",
+    image: "/images/photopdf-hero.png",
   }
 ];

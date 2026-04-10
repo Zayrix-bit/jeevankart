@@ -7,7 +7,7 @@ import "@/styles/about-editorial.css";
 
 export default function About() {
   return (
-    <section id="about" className="py-16 sm:py-24 lg:py-40 bg-transparent">
+    <section id="about" className="py-16 sm:py-24 lg:py-40 bg-transparent" aria-label="About Ritesh — Freelance Web Developer">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
@@ -47,11 +47,10 @@ export default function About() {
             </FadeUp>
 
             <p className="about-editorial__text">
-              Hey, I&apos;m Ritesh, a web developer who loves building websites that actually
+              Hey, I&apos;m Ritesh, a freelance web developer who builds websites that actually
               work. Not just look good, but load fast, feel smooth, and help real businesses
-              get more customers. I&apos;ve spent years learning the tools and technologies that
-              power the best websites on the internet, and now I use them to build things
-              that make a real difference for the people I work with.
+              get more customers. I&apos;ve spent years mastering tools like Next.js, React, and
+              Tailwind CSS to build things that make a real difference for the people I work with.
             </p>
 
             <p className="about-editorial__text">
