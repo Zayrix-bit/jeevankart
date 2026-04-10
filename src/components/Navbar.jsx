@@ -30,22 +30,21 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 w-full z-50 transition-all duration-300 pt-3 px-4 sm:px-6">
-      <nav 
-        className={`mx-auto max-w-5xl transition-all duration-300 rounded-full border ${
-          isScrolled 
-            ? "bg-[#0a0a0a]/80 backdrop-blur-md border-white/10 shadow-lg py-1.5" 
-            : "bg-transparent border-transparent py-2.5"
-        }`}
+      <nav
+        className={`mx-auto max-w-5xl transition-all duration-300 rounded-full border ${isScrolled
+          ? "bg-[#0a0a0a]/40 backdrop-blur-lg border-white/10 shadow-lg py-1.5"
+          : "bg-transparent border-transparent py-2.5"
+          }`}
       >
         <div className="flex items-center justify-between px-5">
           <div className="flex lg:flex-1">
             <Link href="#home" className="-m-1 p-1 flex items-center gap-2">
               <span className="flex items-center">
-                <Image 
-                  src="/logo.png" 
-                  alt="Jeevankart Logo" 
-                  width={28} 
-                  height={28} 
+                <Image
+                  src="/logo.png"
+                  alt="Jeevankart Logo"
+                  width={28}
+                  height={28}
                   className="rounded-full object-cover"
                 />
               </span>
@@ -54,7 +53,7 @@ export default function Navbar() {
               </span>
             </Link>
           </div>
-          
+
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -65,19 +64,19 @@ export default function Navbar() {
               <Menu className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
-          
+
           <div className="hidden lg:flex lg:gap-x-7">
             {navLinks.map((item) => (
-              <Link 
-                key={item.name} 
-                href={item.href} 
+              <Link
+                key={item.name}
+                href={item.href}
                 className="text-[13px] font-medium leading-6 text-slate-300 hover:text-white transition-colors"
               >
                 {item.name}
               </Link>
             ))}
           </div>
-          
+
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link href="#contact" className="text-xs font-semibold leading-6 bg-white text-black px-4 py-1.5 rounded-full hover:bg-slate-200 transition-colors">
               Contact
@@ -92,11 +91,11 @@ export default function Navbar() {
           <div className="flex items-center justify-between mb-8">
             <Link href="#home" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
               <span className="flex items-center">
-                <Image 
-                  src="/logo.png" 
-                  alt="Jeevankart Logo" 
-                  width={28} 
-                  height={28} 
+                <Image
+                  src="/logo.png"
+                  alt="Jeevankart Logo"
+                  width={28}
+                  height={28}
                   className="rounded-full object-cover"
                 />
               </span>
