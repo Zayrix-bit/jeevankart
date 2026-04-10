@@ -14,7 +14,7 @@ export default function Toast({ type = "success", message, onClose, duration = 4
   const isSuccess = type === "success";
 
   return (
-    <div className="fixed top-40 left-1/2 -translate-x-1/2 z-[9999] animate-toast-in">
+    <div className="fixed top-55 left-1/2 -translate-x-1/2 z-[9999] animate-toast-in">
       <div
         className="flex items-center gap-3 px-5 py-3.5 rounded-2xl border backdrop-blur-xl shadow-2xl"
         style={{
