@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FadeUp from "@/components/animations/FadeUp";
 import Toast from "@/components/Toast";
 import { Mail, Phone, MessageSquare, Send } from "lucide-react";
@@ -9,14 +9,38 @@ import { sendEmail } from "@/app/actions/sendEmail";
 export default function Contact() {
   const [isPending, setIsPending] = useState(false);
   const [toast, setToast] = useState(null);
+  const [num1, setNum1] = useState(0);
+  const [num2, setNum2] = useState(0);
+  const [captchaAnswer, setCaptchaAnswer] = useState("");
+
+  const generateCaptcha = () => {
+    setNum1(Math.floor(Math.random() * 10) + 1);
+    setNum2(Math.floor(Math.random() * 10) + 1);
+    setCaptchaAnswer("");
+  };
+
+  useEffect(() => {
+    // Run asynchronously to avoid the React "sync setState in effect" cascading render warning
+    const timer = setTimeout(() => {
+      generateCaptcha();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   async function handleSubmit(formData) {
+    if (parseInt(captchaAnswer) !== num1 + num2) {
+      setToast({ type: "error", message: "Incorrect security answer. Please try again." });
+      generateCaptcha();
+      return;
+    }
+
     setIsPending(true);
     setToast(null);
     const result = await sendEmail(formData);
     if (result.success) {
       setToast({ type: "success", message: "Message sent successfully!" });
       document.getElementById('contact-form').reset();
+      generateCaptcha();
     } else {
       setToast({ type: "error", message: "Something went wrong. Try again." });
     }
@@ -80,6 +104,23 @@ export default function Contact() {
                     <label htmlFor="message" className="block text-[10px] sm:text-xs font-medium text-slate-300 mb-1 uppercase tracking-wider">Your Message</label>
                     <textarea id="message" name="message" rows="3" required className="w-full px-3 py-2.5 rounded-xl border border-white/10 focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all outline-none bg-black/40 text-white placeholder-slate-600 resize-none text-xs sm:text-sm" placeholder="Tell me about your project..."></textarea>
                   </div>
+                  
+                  {/* Math CAPTCHA */}
+                  <div>
+                    <label htmlFor="captcha" className="block text-[10px] sm:text-xs font-medium text-slate-300 mb-1 uppercase tracking-wider">
+                      Security Question: What is {num1} + {num2}?
+                    </label>
+                    <input 
+                      type="number" 
+                      id="captcha" 
+                      value={captchaAnswer}
+                      onChange={(e) => setCaptchaAnswer(e.target.value)}
+                      required 
+                      className="w-full px-3 py-2.5 rounded-xl border border-white/10 focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all outline-none bg-black/40 text-white placeholder-slate-600 text-xs sm:text-sm" 
+                      placeholder="Enter the sum" 
+                    />
+                  </div>
+
                   <button 
                     type="submit" 
                     disabled={isPending}

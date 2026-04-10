@@ -18,6 +18,10 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata = {
   title: "Jeevankart | Professional Web Developer",
   description: "High-converting web development portfolio showcasing clean, accessible, and fast websites.",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export const viewport = {

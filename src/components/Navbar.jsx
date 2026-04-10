@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 
+import Image from "next/image";
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,6 +15,8 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    // Run immediately on mount to set correct state if user refreshes while scrolled down
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -35,9 +39,17 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between px-5">
           <div className="flex lg:flex-1">
-            <Link href="#home" className="-m-1 p-1 flex items-center gap-1.5">
-              <span className="font-bold text-lg tracking-tight text-white flex items-center">
-                <span className="w-6 h-6 rounded-full bg-white text-black flex items-center justify-center mr-1.5 text-xs">J</span>
+            <Link href="#home" className="-m-1 p-1 flex items-center gap-2">
+              <span className="flex items-center">
+                <Image 
+                  src="/logo.png" 
+                  alt="Jeevankart Logo" 
+                  width={28} 
+                  height={28} 
+                  className="rounded-full object-cover"
+                />
+              </span>
+              <span className="font-bold text-lg tracking-tight text-white">
                 Jeevankart
               </span>
             </Link>
@@ -78,7 +90,16 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden absolute top-0 left-0 w-full bg-[#050505] h-screen z-50 p-6 flex flex-col">
           <div className="flex items-center justify-between mb-8">
-            <Link href="#home" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="#home" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
+              <span className="flex items-center">
+                <Image 
+                  src="/logo.png" 
+                  alt="Jeevankart Logo" 
+                  width={28} 
+                  height={28} 
+                  className="rounded-full object-cover"
+                />
+              </span>
               <span className="font-extrabold text-xl tracking-tight text-white">Jeevankart</span>
             </Link>
             <button
