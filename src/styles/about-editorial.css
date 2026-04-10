@@ -39,9 +39,11 @@
 @media (max-width: 640px) {
   .about-editorial__image {
     float: none;
-    width: 385px;
-    margin: 0 auto 28px auto;
-    display: block;
+    width: 100%;
+    margin: 0 0 28px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .about-editorial__text {

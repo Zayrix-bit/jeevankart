@@ -14,7 +14,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-24 lg:py-40 bg-transparent relative overflow-hidden">
+    <section id="projects" className="py-16 sm:py-24 lg:py-40 bg-transparent relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
@@ -46,7 +46,7 @@ export default function Projects() {
             <div className="flex flex-col lg:flex-row lg:items-start lg:gap-20">
 
               {/* ─── Left: Project Selector ─── */}
-              <nav className="flex flex-row lg:flex-col gap-0 lg:w-48 shrink-0 mb-12 lg:mb-0 lg:pt-4 border-b lg:border-b-0 border-white/[0.06]">
+              <nav className="flex flex-row lg:flex-col gap-0 lg:w-48 shrink-0 mb-12 lg:mb-0 lg:pt-4 border-b lg:border-b-0 border-white/[0.06] overflow-x-auto scrollbar-hide snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {projects.map((project, i) => {
                   const isActive = i === activeIndex;
                   return (
@@ -54,7 +54,7 @@ export default function Projects() {
                       key={project.id}
                       onClick={() => handleSelect(i)}
                       onMouseEnter={() => handleSelect(i)}
-                      className="relative text-left py-4 lg:py-5 px-1 flex-1 lg:flex-none group transition-all duration-300 cursor-pointer"
+                      className="relative text-left py-4 lg:py-5 px-1 flex-1 lg:flex-none group transition-all duration-300 cursor-pointer snap-start shrink-0 min-w-[80px]"
                     >
                       {/* Active indicator — bottom on mobile, left on desktop */}
                       <div
@@ -103,7 +103,7 @@ export default function Projects() {
                 {/* Large Title */}
                 <div className="relative">
                   <h3
-                    className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1] transition-all duration-500 ease-out"
+                    className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1] transition-all duration-500 ease-out"
                     key={active.id + '-title'}
                   >
                     {active.title}
@@ -158,7 +158,7 @@ export default function Projects() {
                   href={active.demoLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-10 px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-all duration-400 group/cta hover:scale-[1.02]"
+                  className="flex sm:inline-flex items-center justify-center gap-2 mt-10 px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-all duration-400 group/cta hover:scale-[1.02] w-full sm:w-auto"
                   style={{
                     border: `1px solid ${active.glow}30`,
                     color: active.glow,

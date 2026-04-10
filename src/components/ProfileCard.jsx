@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useEffect, useRef, useCallback, useMemo, useState } from 'react';
 import './ProfileCard.css';
 
 const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)';
@@ -52,6 +52,15 @@ const ProfileCardComponent = ({
 }) => {
   const wrapRef = useRef(null);
   const shellRef = useRef(null);
+
+  // Detect mobile to disable all interactions (card becomes purely visual)
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   const enterTimerRef = useRef(null);
   const leaveRafRef = useRef(null);
@@ -385,7 +394,7 @@ const ProfileCardComponent = ({
   return (
     <div
       ref={wrapRef}
-      className={`relative touch-none ${className}`.trim()}
+      className={`relative ${isMobile ? 'touch-auto pointer-events-none' : 'touch-none'} ${className}`.trim()}
       style={{ perspective: '500px', transform: 'translate3d(0, 0, 0.1px)', ...cardStyle }}
     >
       {behindGlowEnabled && (

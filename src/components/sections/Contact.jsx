@@ -24,7 +24,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 lg:py-40 bg-transparent relative z-10">
+    <section id="contact" className="py-16 sm:py-24 lg:py-40 bg-transparent relative z-10">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeUp delay={0.1}>
           <div className="text-center mb-10 sm:mb-12">
@@ -37,7 +37,7 @@ export default function Contact() {
 
         <FadeUp delay={0.2}>
           <div className="bg-white/5 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden border border-white/10 transition-all">
-            <div className="grid grid-cols-1 md:grid-cols-5 flex-col-reverse">
+            <div className="grid grid-cols-1 md:grid-cols-5">
               {/* Contact Info Sidebar */}
               <div className="bg-black/40 border-b md:border-b-0 md:border-r border-white/10 p-5 sm:p-8 md:col-span-2 text-white flex flex-col justify-between">
                 <div>

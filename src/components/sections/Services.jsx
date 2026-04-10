@@ -30,7 +30,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-24 lg:py-40 bg-transparent select-none">
+    <section id="services" className="py-16 sm:py-24 lg:py-40 bg-transparent select-none">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeUp delay={0.1}>
           <div className="text-center mb-12">
@@ -41,7 +41,7 @@ export default function Services() {
           </div>
         </FadeUp>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (

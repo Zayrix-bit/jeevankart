@@ -7,7 +7,7 @@ import "@/styles/about-editorial.css";
 
 export default function About() {
   return (
-    <section id="about" className="py-24 lg:py-40 bg-transparent">
+    <section id="about" className="py-16 sm:py-24 lg:py-40 bg-transparent">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}

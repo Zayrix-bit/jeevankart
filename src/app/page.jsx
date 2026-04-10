@@ -11,7 +11,6 @@ import {
   ElasticSnap,
   ScalePortal,
   DiagonalSweep,
-  HorizontalSplit,
 } from "@/components/animations/DimensionalScroll";
 
 export default function Home() {
@@ -45,10 +44,10 @@ export default function Home() {
         <WhyChooseMe />
       </DiagonalSweep>
 
-      {/* Contact — halves slide in and merge together */}
-      <HorizontalSplit>
+      {/* Contact */}
+      <ScalePortal>
         <Contact />
-      </HorizontalSplit>
+      </ScalePortal>
     </main>
   );
 }
