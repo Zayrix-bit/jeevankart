@@ -46,7 +46,7 @@ export default function Projects() {
             <div className="flex flex-col lg:flex-row lg:items-start lg:gap-20">
 
               {/* ─── Left: Project Selector ─── */}
-              <nav className="flex flex-row lg:flex-col gap-0 lg:w-48 shrink-0 mb-12 lg:mb-0 lg:pt-4 border-b lg:border-b-0 border-white/[0.06] overflow-x-auto scrollbar-hide snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              <nav className="flex flex-row lg:flex-col gap-0 lg:w-48 shrink-0 mb-12 lg:mb-0 lg:pt-4 border-b lg:border-b-0 border-white/[0.06] overflow-x-auto snap-x snap-mandatory">
                 {projects.map((project, i) => {
                   const isActive = i === activeIndex;
                   return (

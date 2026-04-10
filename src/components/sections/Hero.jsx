@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="max-w-5xl mx-auto text-center relative z-10 w-full pointer-events-none">
 
         <FadeUp delay={0.2}>
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[26px] xl:text-[28px] font-medium text-white tracking-wide mb-4 sm:mb-6 lg:leading-relaxed">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-medium text-white tracking-wide mb-4 sm:mb-6 lg:leading-relaxed">
             Web Developer Who Builds <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 font-semibold">High-Converting</span> Websites
           </h1>

@@ -10,7 +10,6 @@ import {
   IrisReveal,
   ElasticSnap,
   ScalePortal,
-  DiagonalSweep,
 } from "@/components/animations/DimensionalScroll";
 
 export default function Home() {
@@ -39,10 +38,10 @@ export default function Home() {
         <Services />
       </ElasticSnap>
 
-      {/* Why Choose Me — diagonal light sweep reveals content */}
-      <DiagonalSweep>
+      {/* Why Choose Me */}
+      <ScalePortal>
         <WhyChooseMe />
-      </DiagonalSweep>
+      </ScalePortal>
 
       {/* Contact */}
       <ScalePortal>
