@@ -74,7 +74,7 @@ const metrics = [
   { value: "5+", label: "Countries" },
   { value: "100%", label: "On-Time" },
   { value: "12+", label: "Projects" },
-  { value: "5.0", label: "Avg Rating" },
+  { value: "4.8", label: "Avg Rating" },
 ];
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -91,52 +91,52 @@ function WorldMapDots({ activeClient, onDotClick }) {
       >
         {/* North America */}
         {[
-          [15,18],[17,17],[19,16],[21,17],[23,18],[16,20],[18,19],[20,18],[22,19],[24,20],
-          [17,22],[19,21],[21,20],[23,21],[25,22],[18,24],[20,23],[22,22],[24,23],
-          [19,26],[21,25],[23,24],[20,28],[22,27],[24,26],
-        ].map(([x,y],i) => (
+          [15, 18], [17, 17], [19, 16], [21, 17], [23, 18], [16, 20], [18, 19], [20, 18], [22, 19], [24, 20],
+          [17, 22], [19, 21], [21, 20], [23, 21], [25, 22], [18, 24], [20, 23], [22, 22], [24, 23],
+          [19, 26], [21, 25], [23, 24], [20, 28], [22, 27], [24, 26],
+        ].map(([x, y], i) => (
           <circle key={`na-${i}`} cx={x} cy={y} r="0.4" fill="rgba(148,163,184,0.15)" />
         ))}
         {/* South America */}
         {[
-          [28,32],[30,31],[29,34],[31,33],[30,36],[32,35],[29,38],[31,37],[30,40],[28,42],
-          [29,44],[27,40],[31,39],
-        ].map(([x,y],i) => (
+          [28, 32], [30, 31], [29, 34], [31, 33], [30, 36], [32, 35], [29, 38], [31, 37], [30, 40], [28, 42],
+          [29, 44], [27, 40], [31, 39],
+        ].map(([x, y], i) => (
           <circle key={`sa-${i}`} cx={x} cy={y} r="0.4" fill="rgba(148,163,184,0.15)" />
         ))}
         {/* Europe */}
         {[
-          [46,16],[48,15],[50,16],[52,17],[47,18],[49,17],[51,18],[53,19],[46,20],[48,19],
-          [50,20],[52,21],[47,22],[49,21],[51,22],
-        ].map(([x,y],i) => (
+          [46, 16], [48, 15], [50, 16], [52, 17], [47, 18], [49, 17], [51, 18], [53, 19], [46, 20], [48, 19],
+          [50, 20], [52, 21], [47, 22], [49, 21], [51, 22],
+        ].map(([x, y], i) => (
           <circle key={`eu-${i}`} cx={x} cy={y} r="0.4" fill="rgba(148,163,184,0.15)" />
         ))}
         {/* Africa */}
         {[
-          [48,24],[50,25],[52,24],[49,27],[51,26],[53,27],[50,29],[52,28],[51,31],[49,30],
-          [50,33],[52,32],[51,35],[53,34],
-        ].map(([x,y],i) => (
+          [48, 24], [50, 25], [52, 24], [49, 27], [51, 26], [53, 27], [50, 29], [52, 28], [51, 31], [49, 30],
+          [50, 33], [52, 32], [51, 35], [53, 34],
+        ].map(([x, y], i) => (
           <circle key={`af-${i}`} cx={x} cy={y} r="0.4" fill="rgba(148,163,184,0.15)" />
         ))}
         {/* Asia */}
         {[
-          [55,15],[57,14],[59,15],[61,16],[63,15],[65,16],[67,17],[56,18],[58,17],[60,18],
-          [62,19],[64,18],[66,19],[68,20],[57,21],[59,20],[61,21],[63,22],[65,21],[67,22],
-          [58,24],[60,23],[62,24],[64,25],[66,24],[68,23],
-        ].map(([x,y],i) => (
+          [55, 15], [57, 14], [59, 15], [61, 16], [63, 15], [65, 16], [67, 17], [56, 18], [58, 17], [60, 18],
+          [62, 19], [64, 18], [66, 19], [68, 20], [57, 21], [59, 20], [61, 21], [63, 22], [65, 21], [67, 22],
+          [58, 24], [60, 23], [62, 24], [64, 25], [66, 24], [68, 23],
+        ].map(([x, y], i) => (
           <circle key={`as-${i}`} cx={x} cy={y} r="0.4" fill="rgba(148,163,184,0.15)" />
         ))}
         {/* Middle East */}
         {[
-          [55,22],[57,23],[59,24],[56,25],[58,26],
-        ].map(([x,y],i) => (
+          [55, 22], [57, 23], [59, 24], [56, 25], [58, 26],
+        ].map(([x, y], i) => (
           <circle key={`me-${i}`} cx={x} cy={y} r="0.4" fill="rgba(148,163,184,0.15)" />
         ))}
         {/* Australia */}
         {[
-          [76,34],[78,33],[80,34],[82,35],[77,36],[79,35],[81,36],[83,37],[78,38],[80,37],
-          [82,38],[79,40],[81,39],
-        ].map(([x,y],i) => (
+          [76, 34], [78, 33], [80, 34], [82, 35], [77, 36], [79, 35], [81, 36], [83, 37], [78, 38], [80, 37],
+          [82, 38], [79, 40], [81, 39],
+        ].map(([x, y], i) => (
           <circle key={`au-${i}`} cx={x} cy={y} r="0.4" fill="rgba(148,163,184,0.15)" />
         ))}
 
@@ -284,17 +284,15 @@ function DesktopTestimonialCard({ client, isActive, onClick }) {
           onClick?.();
         }
       }}
-      className={`relative p-5 rounded-2xl border transition-all duration-500 cursor-pointer ${
-        isActive
-          ? "bg-white/[0.04] border-white/[0.12] shadow-lg shadow-purple-500/5"
-          : "bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.03] hover:border-white/[0.08]"
-      }`}
+      className={`relative p-5 rounded-2xl border transition-all duration-500 cursor-pointer ${isActive
+        ? "bg-white/[0.04] border-white/[0.12] shadow-lg shadow-purple-500/5"
+        : "bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.03] hover:border-white/[0.08]"
+        }`}
     >
       {/* Quote icon */}
       <Quote
-        className={`w-4 h-4 mb-3 transition-colors duration-500 ${
-          isActive ? "text-purple-400" : "text-white/10"
-        }`}
+        className={`w-4 h-4 mb-3 transition-colors duration-500 ${isActive ? "text-purple-400" : "text-white/10"
+          }`}
         strokeWidth={1.5}
         aria-hidden="true"
       />
@@ -425,11 +423,10 @@ function MobileCarousel({ activeIdx, onSelect }) {
           <button
             key={client.id}
             onClick={() => onSelect(client)}
-            className={`rounded-full transition-all duration-500 ${
-              activeIdx === i
-                ? "w-5 h-1.5 bg-purple-400"
-                : "w-1.5 h-1.5 bg-white/15 active:bg-white/40"
-            }`}
+            className={`rounded-full transition-all duration-500 ${activeIdx === i
+              ? "w-5 h-1.5 bg-purple-400"
+              : "w-1.5 h-1.5 bg-white/15 active:bg-white/40"
+              }`}
             aria-label={`View review from ${client.name}`}
           />
         ))}
@@ -556,11 +553,10 @@ export default function GlobalClients() {
                   <button
                     key={client.id}
                     onClick={() => handleClientSelect(client)}
-                    className={`rounded-full transition-all duration-500 ${
-                      activeClient.id === client.id
-                        ? "w-5 h-1.5 bg-purple-400"
-                        : "w-1.5 h-1.5 bg-white/15 active:bg-white/40"
-                    }`}
+                    className={`rounded-full transition-all duration-500 ${activeClient.id === client.id
+                      ? "w-5 h-1.5 bg-purple-400"
+                      : "w-1.5 h-1.5 bg-white/15 active:bg-white/40"
+                      }`}
                     aria-label={`View testimonial from ${client.name}`}
                   />
                 ))}
@@ -605,11 +601,10 @@ export default function GlobalClients() {
                     <button
                       key={client.id}
                       onClick={() => handleClientSelect(client)}
-                      className={`rounded-full transition-all duration-500 ${
-                        activeClient.id === client.id
-                          ? "w-6 h-1.5 bg-purple-400"
-                          : "w-1.5 h-1.5 bg-white/20 hover:bg-white/40"
-                      }`}
+                      className={`rounded-full transition-all duration-500 ${activeClient.id === client.id
+                        ? "w-6 h-1.5 bg-purple-400"
+                        : "w-1.5 h-1.5 bg-white/20 hover:bg-white/40"
+                        }`}
                       aria-label={`View testimonial from ${client.name}`}
                     />
                   ))}
@@ -620,7 +615,7 @@ export default function GlobalClients() {
               <DesktopTestimonialCard
                 client={activeClient}
                 isActive={true}
-                onClick={() => {}}
+                onClick={() => { }}
               />
             </div>
           </FadeUp>
