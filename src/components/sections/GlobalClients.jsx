@@ -162,7 +162,20 @@ function WorldMapDots({ activeClient, onDotClick }) {
 
         {/* Client location dots — larger hit area for clicks */}
         {clients.map((client, i) => (
-          <g key={`dot-${i}`} className="cursor-pointer" onClick={() => onDotClick(client)}>
+          <g
+            key={`dot-${i}`}
+            className="cursor-pointer"
+            onClick={() => onDotClick(client)}
+            tabIndex={0}
+            role="button"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') {
+                if (e.key === ' ' || e.code === 'Space') e.preventDefault();
+                onDotClick(client);
+              }
+            }}
+            aria-label={`View testimonial from ${client.name}, ${client.country}`}
+          >
             {/* Invisible larger hit area */}
             <circle
               cx={client.dotPosition.x} cy={client.dotPosition.y}
@@ -265,7 +278,12 @@ function DesktopTestimonialCard({ client, isActive, onClick }) {
       onClick={onClick}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === 'Enter' && onClick?.()}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') {
+          if (e.key === ' ' || e.code === 'Space') e.preventDefault();
+          onClick?.();
+        }
+      }}
       className={`relative p-5 rounded-2xl border transition-all duration-500 cursor-pointer ${
         isActive
           ? "bg-white/[0.04] border-white/[0.12] shadow-lg shadow-purple-500/5"
@@ -373,6 +391,14 @@ function MobileCarousel({ activeIdx, onSelect }) {
     scrollTimerRef.current = setTimeout(handleScrollEnd, 150);
   }, [handleScrollEnd]);
 
+  // Cleanup scroll timer on unmount
+  useEffect(() => {
+    return () => {
+      clearTimeout(scrollTimerRef.current);
+      scrollTimerRef.current = null;
+    };
+  }, []);
+
   return (
     <div className="relative -mx-4">
       {/* Scroll container */}
@@ -440,6 +466,14 @@ export default function GlobalClients() {
     setActiveClient(client);
     clearTimeout(resumeTimerRef.current);
     resumeTimerRef.current = setTimeout(() => setAutoRotate(true), 12000);
+  }, []);
+
+  // Cleanup resumeTimer on unmount
+  useEffect(() => {
+    return () => {
+      clearTimeout(resumeTimerRef.current);
+      resumeTimerRef.current = null;
+    };
   }, []);
 
   return (
