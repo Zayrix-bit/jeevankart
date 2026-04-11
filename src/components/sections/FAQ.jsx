@@ -39,7 +39,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-16 sm:py-24 lg:py-40 bg-transparent relative z-10" aria-label="Frequently asked questions about web development services">
+    <section id="faq" className="pt-32 pb-20 sm:py-24 lg:py-40 bg-transparent relative z-10" aria-label="Frequently asked questions about web development services">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeUp delay={0.1}>
           <div className="text-center mb-12">

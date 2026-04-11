@@ -14,7 +14,7 @@ export default function WhyChooseMe() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 lg:py-40 bg-transparent text-white relative z-10 select-none" aria-label="Reasons to hire Ritesh as your web developer">
+    <section className="pt-32 pb-20 sm:py-24 lg:py-40 bg-transparent text-white relative z-10 select-none" aria-label="Reasons to hire Ritesh as your web developer">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <FadeUp delay={0.1}>

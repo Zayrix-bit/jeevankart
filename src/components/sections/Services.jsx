@@ -30,7 +30,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-16 sm:py-24 lg:py-40 bg-transparent select-none" aria-label="Web development services offered">
+    <section id="services" className="pt-32 pb-20 sm:pb-24 lg:pb-40 bg-transparent select-none" aria-label="Web development services offered">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeUp delay={0.1}>
           <div className="text-center mb-12">

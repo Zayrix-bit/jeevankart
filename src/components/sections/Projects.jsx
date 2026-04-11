@@ -15,7 +15,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-16 sm:py-24 lg:py-40 bg-transparent relative overflow-hidden" aria-label="Featured web development projects">
+    <section id="projects" className="pt-32 pb-20 sm:py-24 lg:py-40 bg-transparent relative overflow-hidden" aria-label="Featured web development projects">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
@@ -124,13 +124,13 @@ export default function Projects() {
                 {/* Large Title */}
                 <div className="relative">
                   <h3
-                    className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1] transition-all duration-500 ease-out"
+                    className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight leading-[1.15] transition-all duration-500 ease-out"
                     key={active.id + '-title'}
                   >
                     {active.title}
                   </h3>
                   <p
-                    className="mt-2 text-sm sm:text-base font-light tracking-widest uppercase transition-all duration-500"
+                    className="mt-1.5 text-xs sm:text-sm font-light tracking-widest uppercase transition-all duration-500"
                     style={{ color: `${active.glow}99` }}
                     key={active.id + '-sub'}
                   >
@@ -139,7 +139,7 @@ export default function Projects() {
                 </div>
 
                 {/* Divider */}
-                <div className="mt-8 mb-8 h-px w-full relative overflow-hidden" aria-hidden="true">
+                <div className="mt-5 mb-5 h-px w-full relative overflow-hidden" aria-hidden="true">
                   <div className="absolute inset-0 bg-white/[0.06]" />
                   <div
                     className="absolute top-0 left-0 h-full transition-all duration-700 ease-out"
@@ -152,14 +152,14 @@ export default function Projects() {
 
                 {/* Description */}
                 <p
-                  className="text-sm sm:text-[15px] text-slate-400/90 leading-[1.9] font-light max-w-xl transition-all duration-500"
+                  className="text-xs sm:text-[13px] text-slate-400/90 leading-[1.8] font-light max-w-lg transition-all duration-500"
                   key={active.id + '-desc'}
                 >
                   {active.description}
                 </p>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2.5 mt-6" key={active.id + '-tech'} aria-label="Technologies used">
+                <div className="flex flex-wrap gap-2 mt-4" key={active.id + '-tech'} aria-label="Technologies used">
                   {active.tech.map((t) => (
                     <span
                       key={t}
@@ -179,7 +179,7 @@ export default function Projects() {
                   href={active.demoLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex sm:inline-flex items-center justify-center gap-2 mt-10 px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-all duration-400 group/cta hover:scale-[1.02] w-full sm:w-auto"
+                  className="flex sm:inline-flex items-center justify-center gap-2 mt-6 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium tracking-wide transition-all duration-400 group/cta hover:scale-[1.02] w-full sm:w-auto"
                   style={{
                     border: `1px solid ${active.glow}30`,
                     color: active.glow,

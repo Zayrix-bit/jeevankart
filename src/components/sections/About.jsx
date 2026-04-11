@@ -7,7 +7,7 @@ import "@/styles/about-editorial.css";
 
 export default function About() {
   return (
-    <section id="about" className="py-16 sm:py-24 lg:py-40 bg-transparent" aria-label="About Ritesh — Freelance Web Developer">
+    <section id="about" className="pt-32 pb-20 sm:py-24 lg:py-40 bg-transparent" aria-label="About Ritesh — Freelance Web Developer">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}

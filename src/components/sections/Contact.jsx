@@ -48,7 +48,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 sm:py-24 lg:py-40 bg-transparent relative z-10" aria-label="Contact Ritesh for a free quote">
+    <section id="contact" className="pt-32 pb-20 sm:py-24 lg:py-40 bg-transparent relative z-10" aria-label="Contact Ritesh for a free quote">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeUp delay={0.1}>
           <div className="text-center mb-10 sm:mb-12">

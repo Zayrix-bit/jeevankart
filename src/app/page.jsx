@@ -2,6 +2,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
+import GlobalClients from "@/components/sections/GlobalClients";
 import Services from "@/components/sections/Services";
 import WhyChooseMe from "@/components/sections/WhyChooseMe";
 import FAQ from "@/components/sections/FAQ";
@@ -33,6 +34,11 @@ export default function Home() {
       <ScalePortal>
         <Projects />
       </ScalePortal>
+
+      {/* Global Clients — proof of international work */}
+      <PerspectiveFold>
+        <GlobalClients />
+      </PerspectiveFold>
 
       {/* Services — stretches elastically then snaps into place */}
       <ElasticSnap>
